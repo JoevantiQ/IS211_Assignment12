@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Quiz Results</title>
+</head>
+<body>
+    <h1>{{ student['first_name'] }} {{ student['last_name'] }}'s Quiz Results</h1>
+
+    {% if results %}
+        <table border="1">
+            <tr>
+                <th>Quiz Subject</th>
+                <th>Quiz Date</th>
+                <th>Score</th>
+            </tr>
+            {% for result in results %}
+            <tr>
+                <td>{{ result['subject'] }}</td>
+                <td>{{ result['quiz_date'] }}</td>
+                <td>{{ result['score'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No Results</p>
+    {% endif %}
+
+    <p><a href="{{ url_for('dashboard') }}">Back to Dashboard</a></p>
+</body>
+</html>
